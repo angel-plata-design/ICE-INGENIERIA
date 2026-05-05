@@ -333,6 +333,9 @@ frontend:
       - working: true
         agent: "testing"
         comment: "✓ Contact form fully functional. Form has 6 fields: Nombre, Empresa, Email, Teléfono, Tipo de servicio (select), Descripción (textarea). Empty form submission shows toast 'Faltan datos'. Valid form submission (name='Juan Test', email='test@test.com', message='Proyecto de prueba') shows success toast 'Solicitud enviada'. Form resets after success. Contact info visible: gerencia@ice-ingenieria.com, (669) 110 00 96, address, founded year 1972."
+      - working: true
+        agent: "testing"
+        comment: "✓ E2E quotation form test completed successfully. All test scenarios passed: (1) Empty form validation - toast 'Faltan datos' appears, no POST sent. (2) Invalid email - HTML5 browser validation blocks submission with proper message. (3) Valid submission with ALL fields (name, company, email, phone, service_type, message) - POST returns 201 with correct response structure (id UUID, created_at, status='new'). (4) Form resets all fields after successful submission. (5) Data persistence verified via GET /api/quotations - entry found in MongoDB with all correct fields matching submitted data. (6) Mobile viewport (390x844) - form submission works correctly, form resets after success. (7) No console errors detected. (8) Only expected API requests made (POST /api/quotations). Response body example: {'id': '7796f358-68d8-4de5-97f5-ac0657574a04', 'name': 'María González E2E', 'company': 'Constructora Demo SA', 'email': 'maria.e2e@example.com', 'phone': '(669) 555 7788', 'service_type': 'Vías Terrestres y Carreteras', 'message': '...', 'status': 'new', 'created_at': '2026-05-05T16:48:11.619903Z'}. All requirements from review request satisfied."
 
   - task: "Footer"
     implemented: true
@@ -373,7 +376,7 @@ frontend:
 metadata:
   created_by: "testing_agent"
   version: "1.0"
-  test_sequence: 2
+  test_sequence: 3
   run_ui: true
 
 test_plan:
@@ -387,3 +390,5 @@ agent_communication:
     message: "Comprehensive testing completed on ICE Ingeniería Civil Especializada landing page. All 14 test points from review request verified on both desktop (1920x900) and mobile (390x844) viewports. All major functionality working correctly. No critical issues found. Minor non-blocking issue: mobile menu doesn't auto-close after clicking link, but scrolling to section works correctly. All visual elements, interactions, form validation, and responsive behavior working as expected. No console errors or network failures detected."
   - agent: "testing"
     message: "Backend API testing completed. All 18 test cases passed successfully. Tested endpoints: GET /api/ (health check), POST /api/quotations (create with validation), GET /api/quotations (list with limit params), GET /api/quotations/{id} (get by ID), POST /api/status (legacy), GET /api/status (legacy). All validation rules working (email format, min/max lengths, required fields). Whitespace trimming verified. CORS headers present. MongoDB persistence confirmed. No critical issues found. Backend is fully functional."
+  - agent: "testing"
+    message: "E2E quotation form testing completed per review request. Executed comprehensive test covering: (1) Empty form validation with toast verification, (2) Invalid email handling via HTML5 browser validation, (3) Valid submission with all 6 fields filled, (4) Response body structure verification (id, created_at, status), (5) Form reset after success, (6) Database persistence via GET API, (7) Mobile viewport testing (390x844), (8) Console error monitoring, (9) Network request monitoring. ALL TESTS PASSED. No critical issues found. Form submits real data to backend, persists in MongoDB, and provides proper user feedback. The quotation form is production-ready."
