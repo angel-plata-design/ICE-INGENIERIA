@@ -101,3 +101,190 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "Test the ICE Ingeniería Civil Especializada landing page - Spanish single-page site with industrial/civil engineering theme. Verify all sections on desktop (1920x900) and mobile (390x844) viewports."
+
+frontend:
+  - task: "Hero Section"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ice/Hero.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✓ Hero section fully functional. Headline 'CONSTRUIMOS INFRAESTRUCTURA QUE CONECTA A MÉXICO' renders correctly with 'QUE CONECTA' in blue (#1E90FF). Eyebrow 'DESDE 1972' with blue line visible. Hero background image loads. Both buttons 'VER PROYECTOS' and 'COTIZAR OBRA' are clickable and scroll smoothly to correct sections. Stats '50+ AÑOS DE EXPERIENCIA' and 'Mazatlán, Sinaloa' visible."
+
+  - task: "Navbar"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ice/Navbar.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✓ Navbar fully functional. Logo image visible with text 'INGENIERÍA CIVIL / ESPECIALIZADA'. All 6 desktop nav links present: NOSOTROS, SERVICIOS, PROYECTOS, ESPECIALIDADES, CLIENTES, CONTACTO. 'COTIZAR' button visible. Hamburger menu correctly hidden on desktop (1920px). All links scroll smoothly to correct sections. Navbar background changes to dark when scrolled."
+
+  - task: "About Section"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ice/About.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✓ About section fully functional. Heading 'EMPRESA ADMINISTRADORA & GERENCIAL' with 'Administradora' in blue. Three image/info cards present: steel structure, engineers with helmets, mission/philosophy text block. Values grid shows all 6 values: Honestidad, Compromiso, Profesionalismo, Trabajo en equipo, Responsabilidad, Eficiencia. Both 'Profesionalismo' and 'Responsabilidad' are FULLY VISIBLE (not cut off). Grid displays 3 columns on desktop."
+
+  - task: "Stats Section"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ice/Stats.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✓ Stats section fully functional. Background image (aerial) with dark overlay loads. 4 animated counters present: 50+, 200+, 40km, 14 - all animate from 0 to target when scrolled into view. Heading 'MÁS DE MEDIO SIGLO CONSTRUYENDO MÉXICO' with blue accent visible."
+
+  - task: "Services Section"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ice/Services.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✓ Services section fully functional. All 6 services listed: 01 Electrificación, 02 Edificación, 03 Hidráulicas, 04 Vías, 05 Equipamiento, 06 Industriales. Hover effects work - service rows highlight with blue arrow icon."
+
+  - task: "Parallax Band"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ice/ParallaxBand.jsx"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✓ Parallax band functional. Bridge night image with parallax effect on scroll. Heading 'DE LOS ESTUDIOS AL CONCRETO FINAL' visible."
+
+  - task: "Projects Section"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ice/Projects.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✓ Projects section fully functional. 6 project cards in grid: Acuario Mar de Cortés, Autopista Tepic-San Blas, Puente San Nicolás, Planta Desalinizadora, Vialidades Costa Pacífico, Recinto Topolobampo. Hover effects work - image goes from grayscale to color and scales up. Each card has tags."
+
+  - task: "Specialties Section"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ice/Specialties.jsx"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✓ Specialties section functional. 8 specialty cards in 4-column grid. Hover effect with line growing works correctly."
+
+  - task: "Clients Section"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ice/Clients.jsx"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✓ Clients section functional. Marquee of 14 client names scrolling horizontally infinitely. No hard breaks observed."
+
+  - task: "CTA Section"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ice/CTA.jsx"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✓ CTA section functional. Heading '¿TIENES UN PROYECTO EN MENTE?' visible. Two buttons present: 'SOLICITAR COTIZACIÓN' and phone number. Phone button is tel: link (tel:+526691100096)."
+
+  - task: "Contact Form"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ice/Contact.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✓ Contact form fully functional. Form has 6 fields: Nombre, Empresa, Email, Teléfono, Tipo de servicio (select), Descripción (textarea). Empty form submission shows toast 'Faltan datos'. Valid form submission (name='Juan Test', email='test@test.com', message='Proyecto de prueba') shows success toast 'Solicitud enviada'. Form resets after success. Contact info visible: gerencia@ice-ingenieria.com, (669) 110 00 96, address, founded year 1972."
+
+  - task: "Footer"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ice/Footer.jsx"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✓ Footer fully functional. Logo, navigation links, contact info all present. Giant transparent 'ICE 1972' word visible. 'Volver Arriba' button scrolls smoothly to top. Coordinates '25°13'51\"N...' visible."
+
+  - task: "Mobile Responsive"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/pages/Landing.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✓ Mobile responsive (390x844) fully functional. Hamburger menu appears on mobile. Clicking hamburger opens fullscreen menu with large nav links. Clicking any link scrolls to section (minor: menu doesn't auto-close but functionality works). All sections stack vertically. Hero text readable and doesn't overflow."
+
+  - task: "Console Errors & Network"
+    implemented: true
+    working: true
+    file: "N/A"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✓ No JavaScript console errors detected. No network failures - all images and resources loaded successfully (no 404s)."
+
+metadata:
+  created_by: "testing_agent"
+  version: "1.0"
+  test_sequence: 1
+  run_ui: true
+
+test_plan:
+  current_focus: []
+  stuck_tasks: []
+  test_all: true
+  test_priority: "high_first"
+
+agent_communication:
+  - agent: "testing"
+    message: "Comprehensive testing completed on ICE Ingeniería Civil Especializada landing page. All 14 test points from review request verified on both desktop (1920x900) and mobile (390x844) viewports. All major functionality working correctly. No critical issues found. Minor non-blocking issue: mobile menu doesn't auto-close after clicking link, but scrolling to section works correctly. All visual elements, interactions, form validation, and responsive behavior working as expected. No console errors or network failures detected."
