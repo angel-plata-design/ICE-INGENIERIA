@@ -104,6 +104,103 @@
 
 user_problem_statement: "Test the ICE Ingeniería Civil Especializada landing page - Spanish single-page site with industrial/civil engineering theme. Verify all sections on desktop (1920x900) and mobile (390x844) viewports."
 
+backend:
+  - task: "Health Check Endpoint"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✓ GET /api/ endpoint working correctly. Returns 200 with JSON {\"service\": \"ICE Ingeniería API\", \"status\": \"ok\"}."
+
+  - task: "Create Quotation - Valid Payloads"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✓ POST /api/quotations working correctly. Valid full payload (all fields) returns 201 with id (UUID), created_at, status='new', and all submitted fields preserved and trimmed. Minimal payload (only required fields: name, email, message) returns 201 with optional fields as None. Whitespace trimming verified - '  Pedro  ' becomes 'Pedro'."
+
+  - task: "Create Quotation - Validation"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✓ POST /api/quotations validation working correctly. Invalid email rejected with 422. Missing required field (message) rejected with 422. Message too short (<5 chars) rejected with 422. Name too short (<2 chars) rejected with 422. All validation rules enforced properly."
+
+  - task: "List Quotations"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✓ GET /api/quotations working correctly. Returns 200 with array sorted by created_at DESC. Query param ?limit=2 correctly returns at most 2 entries. ?limit=0 correctly rejected with 422 (ge=1 validation). ?limit=999 correctly rejected with 422 (le=500 validation). All created quotations present in list."
+
+  - task: "Get Quotation by ID"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✓ GET /api/quotations/{id} working correctly. Valid UUID returns 200 with full quotation data. Non-existent UUID returns 404 with {\"detail\": \"Quotation not found\"}."
+
+  - task: "Legacy Status Endpoints"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✓ Legacy endpoints working correctly. POST /api/status with {\"client_name\": \"test_client\"} returns 200/201 with id and timestamp. GET /api/status returns array containing created entries. Backward compatibility maintained."
+
+  - task: "CORS Configuration"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✓ CORS headers present. access-control-allow-origin: * verified in response headers."
+
+  - task: "Database Persistence"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✓ MongoDB persistence verified. All created quotations successfully persisted in 'quotations' collection. Retrieved quotations match created data. Database operations working correctly."
+
 frontend:
   - task: "Hero Section"
     implemented: true
@@ -276,7 +373,7 @@ frontend:
 metadata:
   created_by: "testing_agent"
   version: "1.0"
-  test_sequence: 1
+  test_sequence: 2
   run_ui: true
 
 test_plan:
@@ -288,3 +385,5 @@ test_plan:
 agent_communication:
   - agent: "testing"
     message: "Comprehensive testing completed on ICE Ingeniería Civil Especializada landing page. All 14 test points from review request verified on both desktop (1920x900) and mobile (390x844) viewports. All major functionality working correctly. No critical issues found. Minor non-blocking issue: mobile menu doesn't auto-close after clicking link, but scrolling to section works correctly. All visual elements, interactions, form validation, and responsive behavior working as expected. No console errors or network failures detected."
+  - agent: "testing"
+    message: "Backend API testing completed. All 18 test cases passed successfully. Tested endpoints: GET /api/ (health check), POST /api/quotations (create with validation), GET /api/quotations (list with limit params), GET /api/quotations/{id} (get by ID), POST /api/status (legacy), GET /api/status (legacy). All validation rules working (email format, min/max lengths, required fields). Whitespace trimming verified. CORS headers present. MongoDB persistence confirmed. No critical issues found. Backend is fully functional."

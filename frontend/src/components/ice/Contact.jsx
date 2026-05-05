@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { ArrowUpRight, Mail, Phone, MapPin } from 'lucide-react';
 import { contact, serviceOptions } from '../../mock';
 import { useToast } from '../../hooks/use-toast';
+
+const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 export default function Contact() {
   const { toast } = useToast();
@@ -10,18 +13,34 @@ export default function Contact() {
 
   const update = (k, v) => setForm((f) => ({ ...f, [k]: v }));
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
       toast({ title: 'Faltan datos', description: 'Completa nombre, correo y descripción del proyecto.' });
       return;
     }
     setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
+    try {
+      const payload = {
+        name: form.name,
+        company: form.company || null,
+        email: form.email,
+        phone: form.phone || null,
+        service_type: form.service || null,
+        message: form.message,
+      };
+      await axios.post(`${API}/quotations`, payload);
       toast({ title: 'Solicitud enviada', description: 'Nuestro equipo se pondrá en contacto contigo pronto.' });
       setForm({ name: '', company: '', email: '', phone: '', service: '', message: '' });
-    }, 900);
+    } catch (err) {
+      const detail = err?.response?.data?.detail;
+      const msg = Array.isArray(detail)
+        ? detail.map((d) => d.msg).join(', ')
+        : (typeof detail === 'string' ? detail : 'Hubo un problema. Intenta de nuevo en unos minutos.');
+      toast({ title: 'No se pudo enviar', description: msg });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const inputCls = 'w-full bg-transparent border-b border-white/20 focus:border-[#1E90FF] outline-none py-3 text-white placeholder:text-white/35 font-body text-[15px] transition-colors';
