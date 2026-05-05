@@ -373,10 +373,22 @@ frontend:
         agent: "testing"
         comment: "✓ No JavaScript console errors detected. No network failures - all images and resources loaded successfully (no 404s)."
 
+  - task: "Visual Regression - Mobile & Desktop Fixes"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/ice/Hero.jsx, /app/frontend/src/components/ice/About.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✓ Visual regression testing completed across 4 viewports. MOBILE (390x844): (1) INFRAESTRUCTURA word fully visible - right edge at 366px vs 390px viewport, NOT cut off. (2) Hero buttons VER PROYECTOS and COTIZAR OBRA fully visible - right edges at 213.8px and 177.2px respectively. (3) Stats '50+ AÑOS' and 'Mazatlán, Sinaloa' visible without overlap. (4) Values grid in 2 columns with NO hyphenation - all 6 values (HONESTIDAD, COMPROMISO, PROFESIONALISMO, RESPONSABILIDAD, EFICIENCIA, TRABAJO EN EQUIPO) display as complete words. DESKTOP (1920x900): (1) COTIZAR header button is BOLD - font-weight: 700, clearly readable on blue background. (2) Hero buttons and stats have excellent spacing - 839px gap between buttons (right edge 559px) and stats (left edge 1398px), NO overlap or cramping. (3) Values grid correctly displays 3 columns with all words readable on single lines. LAPTOP (1366x768): Hero headline and buttons visible without cut-off. TABLET (768x1024): Hero text readable, buttons not cut off, values grid displays correctly. All 4 reported issues from review request are VERIFIED AS FIXED. Screenshots captured for all test scenarios."
+
 metadata:
   created_by: "testing_agent"
   version: "1.0"
-  test_sequence: 3
+  test_sequence: 4
   run_ui: true
 
 test_plan:
@@ -392,3 +404,5 @@ agent_communication:
     message: "Backend API testing completed. All 18 test cases passed successfully. Tested endpoints: GET /api/ (health check), POST /api/quotations (create with validation), GET /api/quotations (list with limit params), GET /api/quotations/{id} (get by ID), POST /api/status (legacy), GET /api/status (legacy). All validation rules working (email format, min/max lengths, required fields). Whitespace trimming verified. CORS headers present. MongoDB persistence confirmed. No critical issues found. Backend is fully functional."
   - agent: "testing"
     message: "E2E quotation form testing completed per review request. Executed comprehensive test covering: (1) Empty form validation with toast verification, (2) Invalid email handling via HTML5 browser validation, (3) Valid submission with all 6 fields filled, (4) Response body structure verification (id, created_at, status), (5) Form reset after success, (6) Database persistence via GET API, (7) Mobile viewport testing (390x844), (8) Console error monitoring, (9) Network request monitoring. ALL TESTS PASSED. No critical issues found. Form submits real data to backend, persists in MongoDB, and provides proper user feedback. The quotation form is production-ready."
+  - agent: "testing"
+    message: "Visual regression testing completed for recent mobile and desktop fixes. Tested 4 viewports: Mobile (390x844), Desktop (1920x900), Laptop (1366x768), Tablet (768x1024). ALL 4 REPORTED ISSUES VERIFIED AS FIXED: (1) Mobile INFRAESTRUCTURA - fully visible at 366px right edge vs 390px viewport, NOT cut off. (2) Desktop hero buttons - excellent 839px spacing between buttons (right edge 559px) and stats (left edge 1398px), NO overlap. (3) Mobile values grid - all 6 values (HONESTIDAD, COMPROMISO, PROFESIONALISMO, RESPONSABILIDAD, EFICIENCIA, TRABAJO EN EQUIPO) display with NO hyphenation. (4) Desktop COTIZAR button - font-weight: 700 (bold), clearly readable on blue background. Desktop values grid correctly displays 3 columns. All viewports tested show proper responsive behavior with no text overflow or layout issues. Screenshots captured for all test scenarios."

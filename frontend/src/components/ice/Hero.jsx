@@ -32,7 +32,8 @@ export default function Hero() {
         </div>
 
         <div>
-          <h1 className="font-display uppercase leading-[0.9] tracking-tight text-white text-[56px] sm:text-[80px] md:text-[120px] lg:text-[160px] xl:text-[180px]">
+          <h1 className="font-display uppercase leading-[0.9] tracking-tight text-white text-[40px] xs:text-[48px] sm:text-[68px] md:text-[100px] lg:text-[140px] xl:text-[170px] break-words"
+            style={{ wordBreak: 'break-word' }}>
             {hero.words.map((w, i) => (
               <span key={i} className="block overflow-hidden">
                 <span
@@ -63,8 +64,8 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
-          <div className="flex items-center gap-4">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <a
               href="#projects"
               onClick={(e) => { e.preventDefault(); document.querySelector('#projects').scrollIntoView({ behavior: 'smooth' }); }}
@@ -81,9 +82,9 @@ export default function Hero() {
             </a>
           </div>
 
-          <div className="flex items-end gap-10">
+          <div className="flex items-end gap-6 sm:gap-10">
             <div>
-              <div className="font-display text-[#1E90FF] text-5xl md:text-6xl leading-none">50<span className="text-white/60">+</span></div>
+              <div className="font-display text-[#1E90FF] text-4xl sm:text-5xl md:text-6xl leading-none">50<span className="text-white/60">+</span></div>
               <div className="font-display uppercase tracking-[0.25em] text-[10px] text-white/60 mt-2">Años de experiencia</div>
             </div>
             <div className="hidden md:block h-16 w-px bg-white/20" />

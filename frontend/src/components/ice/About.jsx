@@ -57,9 +57,14 @@ export default function About() {
           <div className="font-display uppercase tracking-[0.3em] text-[11px] text-white/50 mb-6">Valores</div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-white/10">
             {about.values.map((v, i) => (
-              <div key={v} className="bg-black p-6 md:p-10 group cursor-default min-h-[160px] flex flex-col justify-between">
-                <div className="font-display text-[#1E90FF] text-xs tracking-widest mb-4">0{i + 1}</div>
-                <div className="font-display uppercase text-white text-3xl md:text-4xl lg:text-5xl tracking-tight leading-[0.95] group-hover:text-[#1E90FF] transition-colors break-words">{v}</div>
+              <div key={v} className="bg-black p-5 sm:p-8 md:p-10 group cursor-default min-h-[140px] md:min-h-[180px] flex flex-col justify-between">
+                <div className="font-display text-[#1E90FF] text-xs tracking-widest mb-3">0{i + 1}</div>
+                <div
+                  className="font-display uppercase text-white text-xl sm:text-2xl md:text-3xl lg:text-5xl tracking-tight leading-[1] group-hover:text-[#1E90FF] transition-colors"
+                  style={{ wordBreak: 'keep-all', overflowWrap: 'normal', hyphens: 'none' }}
+                >
+                  {v}
+                </div>
               </div>
             ))}
           </div>

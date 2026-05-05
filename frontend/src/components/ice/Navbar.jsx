@@ -65,9 +65,9 @@ export default function Navbar() {
           <div className="flex items-center gap-4 shrink-0">
             <button
               onClick={() => go('#contact')}
-              className="hidden md:inline-flex items-center gap-2 font-display uppercase tracking-[0.2em] text-[12px] text-black bg-[#1E90FF] hover:bg-white transition-colors px-6 py-3.5"
+              className="hidden md:inline-flex items-center gap-2 font-display uppercase tracking-[0.18em] text-[13px] font-bold text-black bg-[#1E90FF] hover:bg-white transition-colors px-6 py-3.5"
             >
-              Cotizar <ArrowUpRight size={16} />
+              Cotizar <ArrowUpRight size={16} strokeWidth={2.5} />
             </button>
             {/* Hamburger only on mobile/tablet (below lg) */}
             <button
