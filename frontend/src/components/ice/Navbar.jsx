@@ -38,48 +38,52 @@ export default function Navbar() {
           scrolled || open ? 'bg-black/90 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
         }`}
       >
-        <div className="max-w-[1600px] mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
-          <a href="#top" onClick={(e) => { e.preventDefault(); go('#top'); }} className="flex items-center gap-3">
-            <img src={brand.logoWhite} alt="ICE" className="h-10 w-auto" />
-            <div className="hidden md:flex flex-col leading-none">
-              <span className="font-display tracking-widest text-white text-[11px] uppercase opacity-70">Ingeniería Civil</span>
-              <span className="font-display tracking-widest text-white text-[11px] uppercase opacity-70">Especializada</span>
+        <div className="max-w-[1600px] mx-auto px-8 md:px-12 lg:px-16 h-24 flex items-center justify-between gap-8">
+          {/* Logo */}
+          <a href="#top" onClick={(e) => { e.preventDefault(); go('#top'); }} className="flex items-center gap-4 shrink-0">
+            <img src={brand.logoWhite} alt="ICE" className="h-12 md:h-14 w-auto" />
+            <div className="hidden xl:flex flex-col leading-tight pl-1 border-l border-white/15" style={{ paddingLeft: '14px' }}>
+              <span className="font-display tracking-[0.25em] text-white text-[10px] uppercase opacity-80">Ingeniería Civil</span>
+              <span className="font-display tracking-[0.25em] text-white text-[10px] uppercase opacity-60">Especializada</span>
             </div>
           </a>
 
-          <nav className="hidden lg:flex items-center gap-10">
+          {/* Desktop Nav */}
+          <nav className="hidden lg:flex items-center gap-8 xl:gap-12 mx-auto">
             {links.map((l) => (
               <button
                 key={l.href}
                 onClick={() => go(l.href)}
-                className="font-display uppercase tracking-[0.18em] text-[13px] text-white/80 hover:text-[#1E90FF] transition-colors ice-link"
+                className="font-display uppercase tracking-[0.18em] text-[12px] xl:text-[13px] text-white/80 hover:text-[#1E90FF] transition-colors ice-link"
               >
                 {l.label}
               </button>
             ))}
           </nav>
 
-          <div className="flex items-center gap-4">
+          {/* Right side */}
+          <div className="flex items-center gap-4 shrink-0">
             <button
               onClick={() => go('#contact')}
-              className="hidden md:inline-flex items-center gap-2 font-display uppercase tracking-[0.18em] text-[12px] text-black bg-[#1E90FF] hover:bg-white transition-colors px-5 py-3"
+              className="hidden md:inline-flex items-center gap-2 font-display uppercase tracking-[0.2em] text-[12px] text-black bg-[#1E90FF] hover:bg-white transition-colors px-6 py-3.5"
             >
               Cotizar <ArrowUpRight size={16} />
             </button>
+            {/* Hamburger only on mobile/tablet (below lg) */}
             <button
               onClick={() => setOpen((v) => !v)}
               aria-label="menu"
-              className="w-11 h-11 flex items-center justify-center border border-white/20 hover:border-[#1E90FF] hover:text-[#1E90FF] transition-colors"
+              className="lg:hidden w-12 h-12 flex items-center justify-center border border-white/20 hover:border-[#1E90FF] hover:text-[#1E90FF] transition-colors"
             >
-              {open ? <X size={18} /> : <Menu size={18} />}
+              {open ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
       </header>
 
-      {/* Full screen menu */}
+      {/* Mobile fullscreen menu */}
       <div
-        className={`fixed inset-0 z-40 bg-black transition-opacity duration-500 ${
+        className={`fixed inset-0 z-40 bg-black transition-opacity duration-500 lg:hidden ${
           open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
@@ -92,18 +96,18 @@ export default function Navbar() {
           />
         </div>
 
-        <div className="relative h-full max-w-[1600px] mx-auto px-6 md:px-10 pt-28 pb-10 flex flex-col justify-between">
+        <div className="relative h-full max-w-[1600px] mx-auto px-8 md:px-12 pt-32 pb-10 flex flex-col justify-between">
           <nav className="flex flex-col gap-4 md:gap-6">
             {links.map((l, i) => (
               <button
                 key={l.href}
                 onClick={() => go(l.href)}
                 style={{ transitionDelay: open ? `${i * 70}ms` : '0ms' }}
-                className={`text-left font-display uppercase tracking-tight text-5xl md:text-7xl lg:text-8xl text-white hover:text-[#1E90FF] transition-all duration-500 ${
+                className={`text-left font-display uppercase tracking-tight text-5xl md:text-7xl text-white hover:text-[#1E90FF] transition-all duration-500 ${
                   open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
               >
-                <span className="text-[#1E90FF] text-base md:text-lg align-top mr-3">0{links.indexOf(l) + 1}</span>
+                <span className="text-[#1E90FF] text-base md:text-lg align-top mr-3">0{i + 1}</span>
                 {l.label}
               </button>
             ))}

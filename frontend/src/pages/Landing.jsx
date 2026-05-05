@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import Navbar from '../components/ice/Navbar';
 import Hero from '../components/ice/Hero';
 import About from '../components/ice/About';
+import Stats from '../components/ice/Stats';
 import Services from '../components/ice/Services';
+import ParallaxBand from '../components/ice/ParallaxBand';
 import Projects from '../components/ice/Projects';
 import Specialties from '../components/ice/Specialties';
 import Clients from '../components/ice/Clients';
@@ -29,7 +31,9 @@ export default function Landing() {
       <Navbar />
       <Hero />
       <About />
+      <Stats />
       <Services />
+      <ParallaxBand />
       <Projects />
       <Specialties />
       <Clients />
